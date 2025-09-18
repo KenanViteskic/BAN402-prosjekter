@@ -1,0 +1,8 @@
+reset;
+model C1.mod;
+data C2_1.dat;
+option solver cplex;
+solve;
+display total_costs;
+display x;
+display y;

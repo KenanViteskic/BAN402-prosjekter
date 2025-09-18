@@ -1,0 +1,21 @@
+reset;
+model C1.mod;
+option solver cplex;
+
+# Scenario A: new facility in R1
+data C3_R1.dat;
+solve;
+printf "\n--- New facility in R1 ---\n";
+display total_costs;
+display x;
+display y;
+
+# Scenario B: new facility in R2
+reset data;
+data C3_R2.dat;
+solve;
+printf "\n--- New facility in R2 ---\n";
+display total_costs;
+display x;
+display y;
+

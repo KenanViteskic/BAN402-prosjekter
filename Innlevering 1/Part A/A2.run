@@ -1,0 +1,8 @@
+reset;
+model A1.mod;
+data A1.dat;
+option solver cplexasl;
+solve;
+
+printf "\n--- Constraints: activity (LHS), target (RHS), surplus ---\n";
+display pollutant_reduction.body, pollutant_reduction.lb, pollutant_reduction.slack;

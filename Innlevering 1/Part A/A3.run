@@ -1,0 +1,13 @@
+reset;
+model A1.mod;
+data A1.dat;
+option solver cplexasl;
+option cplex_options 'sensitivity';
+solve;
+
+printf "\n--- Shadow price, Lower limit, current, upper limit ---\n";
+display pollutant_reduction, pollutant_reduction.down, pollutant_reduction.current, pollutant_reduction.up;
+
+param new_costs;
+let new_costs := total_costs + pollutant_reduction['P2']*(70-35);
+display new_costs;

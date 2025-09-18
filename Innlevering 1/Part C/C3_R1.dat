@@ -1,0 +1,45 @@
+set R := R1 R2;                                                                #regions
+set F := F1 F2 F3;                                                                #facilities
+set K := 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15;                                  #markets
+
+param CX: F1 F2 F3 :=                                                             #transportation cost from regions to facilities
+R1        12 15 0
+R2        13 10 20
+;
+
+param CY: 1  2  3  4  5  6  7  8  9  10  11  12  13  14  15 :=                #transportation cost from facilities to markets
+F1        84 51 15 60 21 24 27 21 96 84  51  84  12  60  114
+F2        9  9  21 21 42 42 90 87 18 24  48  30  75  24  33
+F3 		  72 64 72 120 72 24 96 100 108 48 88 128 48 68 76
+;
+
+param Q :=                                                                     #regions' capacities
+R1 200
+R2 200
+;
+
+param Y := 																	   #facilities' capacities
+F1 150
+F2 150
+F3 50
+;
+
+param Z :=                                                                     #markets' demands
+1   15
+2   21
+3   17
+4   15
+5   22
+6   15
+7   20
+8   12
+9   15
+10  18
+11  19
+12  28
+13  25
+14  22
+15  23 
+;
+
+let {k in K} Z[k] := 1.2 * Z[k];                             				    #increase the demand by 20%

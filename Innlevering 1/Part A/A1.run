@@ -1,0 +1,7 @@
+reset;
+model A1.mod;
+data A1.dat;
+option solver cplexasl;
+solve;
+display total_costs;
+display x;

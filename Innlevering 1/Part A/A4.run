@@ -1,0 +1,14 @@
+reset;
+model A1.mod;
+data A1.dat;
+option solver cplexasl;
+option cplex_options 'sensitivity';
+solve;
+
+display x['F1'].rc, x['F1'].down, x['F1'].current, x['F1'].up;
+display x['F2'].rc, x['F2'].down, x['F2'].current, x['F2'].up;
+display x['F3'].rc, x['F3'].down, x['F3'].current, x['F3'].up;
+
+param new_costs;
+let new_costs := total_costs - x['F2']*(30-20);
+display new_costs;
