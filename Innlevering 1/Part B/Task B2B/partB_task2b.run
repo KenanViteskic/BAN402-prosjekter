@@ -1,0 +1,11 @@
+# Task 1 : RUN
+
+reset;
+option solver cplex;
+
+model partB_task2b.mod;
+data  partB_task2b.dat;
+
+solve;
+
+display p5;

@@ -1,0 +1,40 @@
+# Task 1 : RUN
+
+reset;
+option solver cplex;
+
+model partB_task1.mod;
+data  partB_task1.dat;
+
+solve;
+
+# Results:
+printf "\n Production plan (y_p) t/week: \n";
+display y;
+
+printf "\n Purchases x_{s,c} (t/week): \n";
+display x;
+
+printf "\n Blend z_{p,c} (t/week): \n";
+display z;
+
+printf "\n Objective value (weekly profit, $): \n";
+display Profit;
+
+# Supplier spend & min-spend slack:
+printf "\n Spend per supplier ($) and slack to $1.5M: \n";
+display {s in S} (sum{c in C} cBuy[s,c]*x[s,c]);
+display {s in S} (sum{c in C} cBuy[s,c]*x[s,c]) - M[s];
+
+# Capacity checks:
+printf "\n Category outputs (t/week): \n";
+display sum{p in A} y[p], sum{p in B} y[p];
+
+# Quality checks (computed averages):
+printf "\n Quality checks (used vs required): \n";
+printf "Strength used per product:\n";
+display {p in P} (sum{c in C} str[c]*z[p,c]) / y[p];
+
+printf "Transparency used per product:\n";
+display {p in P} (sum{c in C} tr[c]*z[p,c]) / y[p];
+
