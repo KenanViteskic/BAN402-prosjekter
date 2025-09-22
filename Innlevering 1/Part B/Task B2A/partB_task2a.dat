@@ -1,0 +1,81 @@
+# Task 1 : Data
+
+set S := S1 S2 S3;							# S3 added
+set C := C1 C2 C3 C4;
+set P := P1 P2 P3 P4;
+
+set A := P1 P2;
+set B := P3 P4;
+
+# Purchase caps u[s,c] (t/week); 0 if not offered
+param u:   C1     C2     C3     C4 :=
+   S1    20000      0  30000  20000
+   S2        0  40000  25000  25000
+   S3     1000      0       0      0 ;		#S3 added
+
+# Purchase prices cBuy[s,c] ($/t)
+param cBuy:  C1    C2    C3    C4 :=
+   S1       57.5     .   52.5   50
+   S2         .    56    53.5   51
+   S3         0     0     0      0 ;		#S3 added
+
+# Minimum spend per supplier M[s] ($)
+param M :=
+   S1 1500000
+   S2 1500000
+   S3 0 ;									#S3 added
+
+# Category capacities (t/week)
+param capA := 50000;
+param capB := 45000;
+
+# Minimum demand dmin[p] (t/week)
+param dmin :=
+   P1 9000
+   P2 7000
+   P3 12000
+   P4 10000 ;
+
+# Sales prices price[p] ($/t)
+param price :=
+   P1 80
+   P2 85
+   P3 100
+   P4 97.5 ;
+
+# Production costs cProd[p] ($/t) (4 for A, 5 for B)
+param cProd :=
+   P1 4
+   P2 4
+   P3 5
+   P4 5 ;
+
+# Cardboard qualities
+param str :=      # strength
+   C1 98
+   C2 96
+   C3 92
+   C4 90 ;
+
+param tr :=       # transparency
+   C1 0.002
+   C2 0.004
+   C3 0.015
+   C4 0.020 ;
+
+# Product quality requirements
+param STRmin :=   # min strength
+   P1 88
+   P2 92
+   P3 97
+   P4 96 ;
+
+param TRmax :=    # max transparency
+   P1 0.020
+   P2 0.015
+   P3 0.003
+   P4 0.003 ;
+
+# Adding the baseline profit from task 1:
+param baseProfit := 2915520 ;
+

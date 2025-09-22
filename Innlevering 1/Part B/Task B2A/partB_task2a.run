@@ -1,0 +1,12 @@
+# Task 1 : RUN
+
+reset;
+option solver cplex;
+
+model partB_task2a.mod;
+data  partB_task2a.dat;
+
+solve;
+
+display p3;			# Maximum acceptable $/t for S3-C1
+display y, x, z;	# New plan
